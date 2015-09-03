@@ -1,0 +1,136 @@
+<div ng-controller="EditLoanCollateralController">
+    <div>
+        <ul class="breadcrumb">
+            <li><a href="#/viewloanaccount/{{loanId}}">{{'label.anchor.viewloanaccount' | translate}}</a></li>
+            <li><a href="#/loan/{{loanId}}/viewcollateral/{{collateralId}}">{{'label.anchor.loanviewcollateral' |
+                translate}}</a></li>
+            <li class="active">{{'label.anchor.editloancollateral' | translate}}</li>
+        </ul>
+    </div>
+    <form class="form-horizontal well" ng-submit="submit()">
+        <api-validate></api-validate>
+        <fieldset>
+            <legend>{{ 'label.anchor.editloancollateral' | translate }}</legend>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="collateralTypeId">{{ 'label.input.type' | translate }}<span
+                        class="required">*</span></label>
+
+                <div class="col-sm-3">
+                    <select id="collateralTypeId" ng-model="formData.collateralTypeId" class="form-control"
+                            ng-options="collateralType.id as collateralType.name for collateralType in collateralTypes"
+                            value="{{collateralType.id}}"></select>
+                </div>
+            </div>
+            <div ng-switch on="formData.collateralTypeId">
+              <div ng-switch-when="69">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="goldfineTypeId">{{ 'GoldFine' | translate }}<span
+                            class="required">*</span></label>
+
+                    <div class="col-sm-3">
+                        <select id="goldfineTypeId" ng-model="formData.goldfineTypeId" class="form-control"
+                                ng-options="goldfineType.id as goldfineType.name for goldfineType in goldfineTypes"
+                                value="{{goldfineType.id}}">
+                                <option value="">--{{'Gold Fineness' | translate}}--</option>
+
+                                </select>
+                    </div>
+                  </div>
+
+
+                  <div class="form-group">
+                      <label class="control-label col-sm-2" for="jewelleryTypeId">{{ 'Jewellery Type' | translate }}<span
+                              class="required">*</span></label>
+
+                      <div class="col-sm-3">
+                          <select id="jewelleryTypeId" ng-model="formData.jewelleryTypeId" class="form-control"
+                                  ng-options="jewelleryType.id as jewelleryType.name for jewelleryType in jewelleryTypes"
+                                  value="{{jewelleryType.id}}">
+                                  <option value="">--{{'Jewellery Type' | translate}}--</option>
+                                  </select>
+                      </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="gross">{{ 'Gross' | translate }}</label>
+
+                        <div class="col-sm-3">
+                            <input id="value" type="text" class="form-control" ng-model="formData.gross">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="impurity">{{ 'Impurity' | translate }}</label>
+
+                        <div class="col-sm-3">
+                            <input id="value" type="text" class="form-control" ng-model="formData.impurity">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="stone">{{ 'Stone W' | translate }}</label>
+
+                        <div class="col-sm-3">
+                            <input id="value" type="text" class="form-control" ng-model="formData.stone">
+                        </div>
+                    </div>
+
+
+              </div>
+              <div ng-switch-when="73">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="maketwoTypeId">{{ 'Make Type' | translate }}<span
+                            class="required">*</span></label>
+
+                    <div class="col-sm-3">
+                        <select id="maketwoTypeId" ng-model="formData.maketwoTypeId" class="form-control"
+                                ng-options="maketwoType.id as maketwoType.name for maketwoType in maketwoTypes"
+                                value="{{maketwoType.id}}">
+                                <option value="">--{{'Make Type' | translate}}--</option>
+                                </select>
+                    </div>
+
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2" for="value">{{ 'Actual Cost' | translate }}</label>
+
+                    <div class="col-sm-3">
+                      <input id="value" type="text" class="form-control" ng-model="formData.actualcost">
+                    </div>
+                  </div>
+
+              </div>
+              <div ng-switch-when="114">
+                <div class="form-group">
+                  <label class="control-label col-sm-2" for="value">{{ 'Actual Cost' | translate }}</label>
+
+                  <div class="col-sm-3">
+                    <input id="actualcost" type="text" class="form-control" ng-model="formData.actualcost">
+                  </div>
+                </div>
+
+              </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="value">{{ 'Upto Loan Amount' | translate }}</label>
+
+                <div class="col-sm-3">
+                    <input id="value" type="text" class="form-control" ng-model="formData.value">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="description">{{ 'label.input.description' | translate }}</label>
+
+                <div class="col-sm-3">
+                    <textarea id="description" ng-model="formData.description" class="form-control" rows="4" cols=""></textarea>
+                </div>
+            </div>
+            <div class="col-md-offset-3">
+                <button id="cancel" type="reset" class="btn btn-default" ng-click="cancel()">{{ 'label.button.cancel' | translate
+                    }}
+                </button>
+                <button id="save" type="submit" class="btn btn-primary" has-permission='UPDATE_COLLATERAL'>{{ 'label.button.save' | translate }}</button>
+            </div>
+
+        </fieldset>
+    </form>
+</div>

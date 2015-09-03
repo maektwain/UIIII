@@ -1,0 +1,73 @@
+<div class="col-md-12" ng-controller="ViewPaymentToWhomController">
+    <div class="paddedbottom10">
+        <ul class="breadcrumb">
+            <li><a href="#/organization">{{'label.anchor.organization' | translate}}</a></li>
+            <li class="active">{{'Payment to Whom' | translate}}</li>
+        </ul>
+        <api-validate></api-validate>
+    </div>
+
+    <script type="text/ng-template" id="deletePaymentToWhom.html">
+        <div class="modal-header silver">
+            <h3 class="bolder">{{'label.heading.delete' | translate}}</h3>
+        </div>
+        <div class="modal-body ">
+
+            <br>
+            <button class="btn btn-warning" ng-click="cancel()">{{'label.button.cancel' | translate}}</button>
+            <button class="btn btn-primary" ng-click="delete()">{{'label.button.confirm' | translate}}</button>
+        </div>
+    </script>
+    <div class="form-horizontal well">
+
+        <div class="row">
+            <div class="pull-right">
+                <div class="btn-group">
+                    <a href="#/createpaymenttowhom/" class="btn btn-primary"  has-permission='CREATE_PAYMENTTOWHOM'><i class="icon-plus icon-white"></i>{{'Add Payment To Whom' | translate}}</a>
+                </div>
+            </div>
+            <legend>{{'Payment To Whom Types' | translate}}</legend>
+        </div>
+        <div>
+            <table class="table  table-striped">
+                <thead>
+                <tr>
+                    <th>{{ 'label.heading.name' | translate }}</th>
+                    <th>{{ 'label.heading.description' | translate }}</th>
+                    <th>{{ 'label.heading.iscashpayment' | translate }}</th>
+                    <th>{{ 'label.heading.position' | translate }}</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-ng-repeat="payment in paymentToWhom">
+                    <td class="col-md-3">
+                        <span>{{payment.name}}</span>
+
+                    </td>
+                    <td class="col-md-4">
+                        <span>{{payment.description}}</span>
+                    </td>
+                    <td class="col-md-1">
+                        <span>{{payment.isCashPayment}}</span>
+                    </td>
+                    <td class="col-md-1">
+                        <span>{{payment.position}}</span>
+                    </td>
+                    <td class="col-md-1">
+                        <a type="button" has-permission='UPDATE_PAYMENTTOWHOM'
+                                data-ng-click="showEdit(payment.id)"><i
+                                class="icon-edit icon-white"></i>{{'label.button.edit' | translate}}</a>
+                    </td>
+                    <td class="col-md-1">
+                        <a  type="button" has-permission='DELETE_PAYMENTTOWHOM'
+                                data-ng-click="deletePaymentToWhom(payment.id)"><i class="icon-remove icon-white"></i>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

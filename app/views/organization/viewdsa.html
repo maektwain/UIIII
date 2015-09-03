@@ -1,0 +1,42 @@
+<div class="col-md-12" ng-controller="ViewDsaController">
+    <ul class="breadcrumb">
+        <li><a href="#/organization">{{'label.anchor.organization' | translate}}</a></li>
+        <li><a href="#/dsas">{{'Manage Direct Sales Associate' | translate}}</a></li>
+        <li class="active">{{dsa.firstname}}&nbsp;&nbsp;{{dsa.lastname}}</li>
+    </ul>
+
+    <div class="well">
+        <div class="pull-right">
+            <div class="btn-group">
+                <a href="#/editdsa/{{dsa.id}}" class="btn btn-primary" has-permission='UPDATE_DSA'><i class="icon-edit icon-white"></i>{{'label.button.edit' | translate}}</a>
+            </div>
+        </div>
+        <h3 class="bolder">{{dsa.displayName}}</h3>
+		<div class="row">
+			<div class="col-md-6">
+		        <table class="table table-bordered table-striped">
+		            <tr>
+		                <td width="20%">{{ 'label.heading.firstname' | translate }}</td>
+		                <td width="80%">{{dsa.firstname}}</td>
+		            </tr>
+		            <tr>
+		                <td>{{ 'label.heading.lastname' | translate }}</td>
+		                <td>{{dsa.lastname}}</td>
+		            </tr>
+		            <tr>
+		                <td>{{ 'label.heading.office' | translate }}</td>
+		                <td>{{dsa.officeName}}</td>
+		            </tr>
+		            <tr>
+		                <td>{{ 'label.heading.mobileNo' | translate }}</td>
+		                <td>{{dsa.mobileNo}}</td>
+		            </tr>
+		            <tr>
+		                <td>{{ 'label.active' | translate }}</td>
+		                <td>{{dsa.isActive}}</td>
+		            </tr>
+		        </table>
+			</div>
+		</div>
+    </div>
+</div>

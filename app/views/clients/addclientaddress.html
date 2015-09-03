@@ -1,0 +1,128 @@
+<div class="row" ng-controller="ClientAddressController">
+    <div>
+        <ul class="breadcrumb">
+            <li><a href="#/clients">{{'label.anchor.clients' | translate}}</a></li>
+            <li><a href="#/viewclient/{{clientId}}">{{'label.anchor.viewclient' | translate}}</a></li>
+            <li class="active">{{'Add Client Address' | translate}}</li>
+        </ul>
+    </div>
+    <form name="createclientaddressform" novalidate="" class="form-horizontal well" rc-submit="submit()">
+        <api-validate></api-validate>
+        <fieldset>
+            <legend>{{'Add Client Address' | translate}}</legend>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="documentTypeId">{{'Address Type' | translate}}<span
+                        class="required">*</span></label>
+
+                <div class="col-sm-3">
+                    <select id="addressTypeId" ng-model="formData.addressTypeId"
+                            ng-options="addresstype.id as addresstype.name for addresstype in addressTypes"
+                            value="{{addresstype.id}}" required="required" class="form-control">
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="address_line">{{'Address Line One' | translate}}<span
+                        class="required">*</span></label>
+
+                <div class="col-sm-3">
+                    <input id="address_line" type="text" name="address_line" ng-model="formData.address_line"
+                            class="form-control"/>
+                </div>
+
+
+
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="address_line_two">{{'Address Line Two' | translate}}<span
+                        class="required">*</span></label>
+
+                <div class="col-sm-3">
+                    <input id="address_line_two" type="text" name="address_line_two" ng-model="formData.address_line_two"
+                            class="form-control"/>
+                </div>
+
+
+
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="landmark">{{'Landmark' | translate}}<span
+                        class="required">*</span></label>
+
+                <div class="col-sm-3">
+                    <input id="landmark" type="text" name="landmark" ng-model="formData.landmark"
+                            class="form-control"/>
+                </div>
+
+
+
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="city">{{'City' | translate}}<span
+                        class="required">*</span></label>
+
+                <div class="col-sm-3">
+                    <input id="city" type="text" name="city" ng-model="formData.city"
+                            class="form-control"/>
+                </div>
+
+
+
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pincode">{{'Pin Code' | translate}}<span
+                        class="required">*</span></label>
+
+
+                <div class="col-sm-3">
+                    <input id="pincode" type="text" name="pincode" ng-model="formData.pincode" ng-pattern="/^[0-9]+$/" ng-minlength=6 ng-maxlength=6
+                            class="form-control"/>
+                            <span class="help-block" ng-show="((createclientaddressform.pincode.$error.minlength || createclientaddressform.pincode.$error.maxlength) && createclientaddressform.pincode.$dirty) ">should be 6 digits</span>
+
+                           <span ng-show="createclientaddressform.pincode.$invalid && createclientaddressform.pincode.$dirty">
+                          <small class="required" ng-show="createclientaddressform.pincode.$error.pattern">
+                              {{'label.mustbenumeric' | translate}}
+                            </small>
+                            </span>
+
+                </div>
+
+                <div class="form-group">
+              <label class="control-label col-sm-2" for="isBoth">{{ 'Present and Permanent Same' | translate }}</label>
+
+              <div class="col-sm-3">
+                  <label class="checkbox">
+                      <input type="checkbox" id="isBoth" ng-model="formData.isBoth">
+                  </label>
+              </div>
+          </div>
+
+
+
+
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2">{{'State'}}</label>
+
+              <div class="col-sm-3">
+                  <select id="stateTypeId" ng-model="formData.stateTypeId"
+                          ng-options="statetype.id as statetype.name for statetype in stateTypes"
+                          value="{{stateType.id}}" required="required" class="form-control">
+                  </select>
+              </div>
+
+
+            </div>
+
+            <div class="col-md-offset-3">
+                <a id="cancel" href="#/viewclient/{{clientId}}">
+                    <button type="reset" class="btn btn-default">{{'label.button.cancel' | translate}}</button>
+                </a>
+                <button id="save" type="submit" has-permission='CREATE_CLIENTADDRESS' class="btn btn-primary">{{'label.button.save' | translate}}</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
